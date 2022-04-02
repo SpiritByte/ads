@@ -1,35 +1,139 @@
 
+<!DOCTYPE html>
 <html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HUGE Games Dashboard</title>
+<link rel="stylesheet" type="text/css" href="/static/temp.css">
+<link rel="stylesheet" type="text/css" href="temp.css">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.8/socket.io.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript">
+		var RobloxToken = "HUGE_apY8vzemOxx6NSMa";
 
- <head>
-  <title> Alexander Li </title>
-  <link rel = "stylesheet" type="text/css" href = "style.css">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6858564247133606"
-     crossorigin="anonymous"></script>
+		function CopyToClipboard() {
+			navigator.clipboard.writeText('_G.AuthKey="'+ RobloxToken +'"\nloadstring(game:HttpGet("https://hugegames.io/script"))()');
+			alert("Copied!");
+		}
+
+		function GoVerifyNerdLolNoPremiumImagineCouldNotBeMeFrBruh() {
+			window.location.replace("https://hugegames.io/verify");
+		}
+
+
+	</script>
 </head>
-
 <body>
+<div class="Boop">
+<div class="MainPage">
+<div class="ScriptSection">
+<div class="MainSec" id="MainSec">
 
-  <div id = "particles-js"></div>
-  <script src = "particles.js"> </script>
-  <script src = "particles.min.js"> </script>
-  <script src = "app.js"> </script>
+<h1 class="e2" style="color: rgb(153,255,247);">_G</h1><h1 class="e2" style="color: rgb(255,255,255);">.</h1><h1 class="e2" style="color: rgb(48,103,210);">AuthKey</h1><h1 class="e2" style="color: rgb(255,255,255);">=</h1><h1 class="e2" style="color: rgb(152,241,149);">"HUGE_apY8vzemOxx6NSMa"</h1>
+<br>
+<h1 class="e2" style="color: rgb(153,255,247);">loadstring</h1><h1 class="e2" style="color: rgb(255,255,255);">(</h1><h1 class="e2" style="color: rgb(153,255,247);">game</h1><h1 class="e2" style="color: rgb(255,255,255);">:</h1><h1 class="e2" style="color: rgb(253,251,102);">HttpGet</h1><h1 class="e2" style="color: rgb(255,255,255);">(</h1><h1 class="e2" style="color: rgb(152,241,149);">"https://HugeGames.io/script"</h1><h1 class="e2" style="color: rgb(255,255,255);">))()</h1>
+</div>
+</div>
+<ul class="Controls">
+<li class="ScriptButton">
+<button onclick="CopyToClipboard()">Copy Script</button>
+</li>
+<li class="ScriptButton">
+<button onclick="GoVerifyNerdLolNoPremiumImagineCouldNotBeMeFrBruh()">Renew 24 Hours</button>
+</li>
+<li class="ScriptButton">
+<button>[InDevelopment]</button>
 
-  <section id = "header">
-    <div class = "container text-center">
-      <div class = "profile-pic1">
-        <img src = "">
-      </div>
-    </div>
-  </section>
+</li>
+</ul>
+<div class="StatTrackersENABLED">
+<ul id="TrackLol" class="Trackers">
+<li class="Tracker" style="height: 5.5%;">
+<h1 class="oopsies" id="RobloxUser">Not Linked</h1>
+</li> 
 
-<div id = "home-button">
-  <h2>  ★  ALEXANDER LI  ★  </h2>
-    <a href = "home.html">
-      <svg><rect></rect></svg>
-      Click Here to Continue
-    </a>
+<script type="text/javascript">
+
+						function numberWithCommas(num) {
+							return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+						}
+
+						$(document).ready(function() {
+
+							var socket = io.connect('https://hugegames.io');
+							// var socket = io.connect('wss://hugegames.io');
+
+							let Currencies = [
+								{Name:"Coins", Color:"240,189,50"},
+								{Name:"Fantasy Coins", Color:"160,160,175"},
+								{Name:"Tech Coins", Color:"154,221,229"},
+								{Name:"Rainbow Coins", Color:"255,0,84"},
+								{Name:"Diamonds", Color:"14,214,248"}
+							]
+
+							for (let i=0;i<Currencies.length;i++){
+								console.log(Currencies[i])
+								// console.log(Currencies[i].Name)
+
+								var Element=document.createElement("li")
+								Element.className = "Tracker"
+								Element.id=Currencies[i].Name
+								Element.innerHTML='<img src="/static/Icons/'+Currencies[i].Name+'.png"><h1 class="Amount" style="color:rgb('+Currencies[i].Color+')" id="'+Currencies[i].Name+'Bal">??,???,???,???</h1><h1 id="'+Currencies[i].Name+'Change" class="AmountC" style="color:rgb('+Currencies[i].Color+')"> +0<h1>'
+								document.getElementById("TrackLol").appendChild(Element)
+							}
+
+							socket.on("Stats", function Statistics(Stats) {
+								console.log(Stats);
+								document.getElementById("RobloxUser").innerHTML=Stats.RobloxUser
+								for (let i in Stats.Balances){
+									console.log(Stats.Balances[i]);
+									document.getElementById(i+"Bal").innerHTML=numberWithCommas(Stats.Balances[i].B)
+									document.getElementById(i+"Change").innerHTML="+ "+numberWithCommas(Stats.Balances[i].C)
+								}
+
+							})
+							
+							for (let i=-0; i<99999; i++) {
+							// for (let i=-0; i<200000; i++) {
+							   StoleThisFromStackOverflowAsjavascriptSucks(i);
+							}
+							  
+							function StoleThisFromStackOverflowAsjavascriptSucks(i) {
+							  setTimeout(function() {
+							    	socket.send("Voyd");
+							  }, 5000*i);
+							}
+						});
+
+					</script>
+</ul>
+</div>
+</div>
+<img class="LOGO" src="/static/BG.png">
+<ul class="buttons">
+<li class="Button">
+<a class="LINK" href="/">🏠 Home</a>
+</li>
+<li class="Button">
+<a class="LINK" href="/dash">📜 Script</a>
+</li>
+<li class="Button">
+<a class="LINK" target="_blank" href="https://hugegames.sellix.io/product/61ffa1eb2bc24">💜 Premium</a>
+</li>
+<li class="Button">
+<a class="LINK" target="_blank" href="https://discord.gg/hugegames">💬 Discord</a>
+</li>
+</li><li class="Button"><a class="LINK" href="/discordlink">💬 ReLink Discord</a></li>
+</ul>
+<div class="UserINFO">
+<img class="UserImage" src="https://cdn.discordapp.com/avatars/773007070605475871/a_1e0833f5ee2fad770c2a38b83e0ad292">
+<h1 class="UserName">Voyd</h1>
+<h1 class="UserId">UID: 1118</h1>
+<h1 class="Type" style=background:rgb(127,242,115);>20.6 Hours</h1>
+
+</div>
+
 </div>
 </body>
-
 </html>
